@@ -1,0 +1,19 @@
+.hover-highlight {
+    position: relative;
+    text-decoration: none;
+}
+
+.hover-highlight::after {
+    content: '';
+    position: absolute;
+    width: 0; /* Ban đầu đường gạch chân ẩn */
+    height: 1.5px; /* Độ dày của gạch chân */
+    background-color: black; /* Màu của gạch chân */
+    bottom: 0;
+    left: 0;
+    transition: width 1s ease; /* Làm chậm thời gian xuất hiện */
+}
+
+.hover-highlight:hover::after {
+    width: 100%; /* Khi hover, đường gạch chân sẽ từ từ hiện ra */
+}
