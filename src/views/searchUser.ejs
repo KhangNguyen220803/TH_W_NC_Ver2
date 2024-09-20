@@ -1,0 +1,123 @@
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>List User</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../../css/index.css">
+</head>
+
+<body>
+  <!-- header -->
+  <%- include('header') %>
+  <!--end header -->
+
+
+    <h2 class="p-3">Sinh Viên Cần Tìm</h2>
+
+    <!-- table -->
+    <div class="d-flex align-items-center justify-content-center mt-5">
+        <table class="table w-75">
+            <thead>
+                <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">MSSV</th>
+                    <th scope="col">Họ Tên</th>
+                    <th scope="col">Giới Tính</th>
+                    <th scope="col">Địa Chỉ</th>
+                    <th scope="col">Điện Thoại</th>
+                    <th scope="col">CCCD</th>
+                    <th scope="col">Lớp</th>
+                    <th scope="col">Hình Ảnh</th>
+                    <th>Xem</th>
+                    <th>Sửa</th>
+                    <th>Xóa</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                <% for(let i=0; i<data.rows.length; i++) { %>
+
+                    <tr>
+                        <td>
+                            <%= i+1 %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].masv %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].hoten %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].gioitinh %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].diachi %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].dienthoai %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].cccd %>
+                        </td>
+                        <td>
+                            <%= data.rows[i].lop %>
+                        </td>
+
+                        
+                        <td class="d-flex align-items-center justify-content-center">
+                         
+                            <img style="width: 60px; height: 60px;" src="../<%= data.rows[i].hinhanh %>" alt="">
+                            
+                        </td>
+
+                        <td class="text-center">
+                            <a href="/detailUser/<%= data.rows[i].masv %>"><i class="fa-solid fa-eye text-dark"></i></a>
+                        </td>
+
+                        <td class="text-center">
+                            <a href="/editUser/<%= data.rows[i].masv %>"><i class="fa-solid fa-pen-to-square"></i></a>
+                        </td>
+
+                        <td class="text-center">
+                            
+                            <form action="/deleteUser" method="post">
+                                <input type="hidden" value="<%= data.rows[i].masv %>" name="masv">
+                                <label for="<%= data.rows[i].masv %>">
+                                    <i class="fa-solid fa-trash text-danger"></i>
+
+                                </label>
+                                <input id="<%= data.rows[i].masv %>" type="submit" value="" style="display: none;" >
+                            </form>
+                        </td>
+
+                    </tr>
+
+
+
+                    <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!--end  table -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+<style>
+
+</style>
+

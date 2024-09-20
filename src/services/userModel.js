@@ -27,7 +27,12 @@ const deleteUser = async (masv) => {
     await pool.execute('DELETE FROM sinhvien WHERE masv=?', [masv])
 }
 
+const searchUser = async (search) => {
+    const [rows, fields] = await pool.execute('SELECT * FROM `sinhvien` WHERE masv=? OR hoten=? OR gioitinh=? OR diachi=? OR dienthoai=? OR cccd=? OR lop=?', [search, search , search, search, search ,search, search])
+    return rows
+}
 
 
 
-export default { getAllUser, getDetailUser, addUser, deleteUser, updateUser, fillUserForm }
+
+export default { getAllUser, getDetailUser, addUser, deleteUser, updateUser, fillUserForm, searchUser }

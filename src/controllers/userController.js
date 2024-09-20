@@ -137,6 +137,18 @@ const deleteUser = async (req, res) => {
 
 
 
+const searchUser = async (req, res) => {
+    let { search } = req.body
+    let searchreturn = await userModel.searchUser(search)
+    res.render('src/views/searchUser.ejs', { data: { title: 'search user', page: 'searchUser', rows: searchreturn } })
+
+    // res.redirect('user')
+
+
+}
+
+
+
 
 
 
@@ -144,6 +156,6 @@ const deleteUser = async (req, res) => {
 //     res.render('src/views/home.ejs', {data: {title:'create new user' , page:'createNewUser'}})
 // }
 
-export default { getAllUser, getDetailUser, addUser, showUserForm, deleteUser, fillUserForm, updateUser }
+export default { getAllUser, getDetailUser, addUser, showUserForm, deleteUser, fillUserForm, updateUser, searchUser }
 
 
