@@ -21,8 +21,8 @@
     <%- include('header') %>
     <!--end header -->
     <div class="position-relative">
-    <h2 class="p-3 " >Chi Tiết Sinh Viên</h2>
-    <a href="/user" class="position-absolute top-0 end-0 p-5 fs-3 text-decoration-none upercase fw-bold">Quay Lại <i class="fa-solid fa-right-from-bracket"></i></a>
+    <h2 class="p-3 " >Detail User</h2>
+    <a href="/user" class="position-absolute top-0 end-0 p-5 fs-3 text-decoration-none upercase fw-bold">Back <i class="fa-solid fa-right-from-bracket"></i></a>
 
     </div>
     <!-- table -->
@@ -31,17 +31,14 @@
             <thead>
                 <tr>
               
-                    <th scope="col">MSSV</th>
-                    <th scope="col">Họ Tên</th>
-                    <th scope="col">Giới Tính</th>
-                    <th scope="col">Địa Chỉ</th>
-                    <th scope="col">Điện Thoại</th>
-                    <th scope="col">CCCD</th>
-                    <th scope="col">Lớp</th>
-                    <th scope="col">Hình Ảnh </th>
-                    <!-- <th>Xem</th>
-                    <th>Sửa</th>
-                    <th>Xóa</th> -->
+                    
+                    <th scope="col">User Name</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Sex</th>
+                    <th scope="col">email</th>
+               
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -49,32 +46,25 @@
                     <tr>
                         
                         <td>
-                            <%= data.rows.masv %>
+                            <%= data.rows.username %>
                         </td>
                         <td>
-                            <%= data.rows.hoten %>
+                            <%= data.rows.password %>
                         </td>
                         <td>
-                            <%= data.rows.gioitinh %>
+                            <%= data.rows.fullname %>
                         </td>
                         <td>
-                            <%= data.rows.diachi %>
+                            <%= data.rows.address %>
                         </td>
                         <td>
-                            <%= data.rows.dienthoai %>
+                            <%= data.rows.sex %>
                         </td>
                         <td>
-                            <%= data.rows.cccd %>
+                            <%= data.rows.email %>
                         </td>
-                        <td>
-                            <%= data.rows.lop %>
-                        </td>
+                       
 
-                        <td class="d-flex align-items-center justify-content-center">
-                         
-                            <img style="width: 60px; height: 60px;" src="../<%= data.rows.hinhanh %>" alt="">
-                            
-                        </td>
 
 
                     </tr>
