@@ -33,7 +33,7 @@ const Login = async (req, res) => {
       }
 
       // Tạo JWT token
-      const token = jwt.sign({ id: user.id, username: user.username }, 'your_jwt_secret_key', {
+      const token = jwt.sign({ id: user.id, username: user.username ,role: user.role}, 'your_jwt_secret_key', {
         expiresIn: '1h',
       });
 
@@ -41,6 +41,7 @@ const Login = async (req, res) => {
       return res.status(200).json({
         message: 'Login successful',
         token,
+
       });
     } catch (error) {
       console.error(error);
@@ -48,10 +49,10 @@ const Login = async (req, res) => {
     }
   }
   const Resgister = async (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, fullname, address, sex, email } = req.body;
   
     // Kiểm tra nếu username và password không được cung cấp
-    if (!username || !password) {
+    if (!username || !password || !fullname || !address || !sex || !email) {
       return res.status(400).json({ message: 'Username and password are required' });
     }
   
@@ -63,7 +64,8 @@ const Login = async (req, res) => {
       }
   
       // Tạo người dùng mới
-      const userId = await userModelAPI.createUser(username, password);
+      const role = "0";
+      const userId = await userModelAPI.createUser(username, password ,fullname, address, sex, email, role);
   
       // Tạo JWT token sau khi đăng ký thành công
       const token = jwt.sign({ id: userId, username }, 'your_jwt_secret_key', {

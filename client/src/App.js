@@ -1,14 +1,14 @@
 
 import './App.css';
-import Login from './components/login';
-import Resgister from './components/resgister';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Routers from './components/router';
 function App() {
   return (
 
    <>
+<Routers/>
 
-<Login/>
-<Resgister/>
+
    </>
     
   );
