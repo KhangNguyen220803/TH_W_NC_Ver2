@@ -3,6 +3,17 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 
+const getAdmin = async (role) => {
+  const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE role=?', [role])
+  return rows[0]
+}
+
+const getUser = async (role,username) => {
+  const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE role=? AND username=?', [role,username])
+  return rows[0]
+}
+
+
 // Hàm để tìm user theo username
 const findUserByUsername = async (username) => {
   const [rows] = await pool.query('SELECT * FROM users WHERE username = ?', [username]);
@@ -29,4 +40,6 @@ const createUser = async (username, password ,fullname, address, sex, email, rol
 export default {
   findUserByUsername,
   createUser,
+  getAdmin,
+  getUser
 };

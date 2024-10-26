@@ -1,8 +1,11 @@
+
+
 import React, { useState, useEffect } from 'react';
-const AdminPage = () => {
+import { useParams } from 'react-router-dom';
+const UserPage = () => {
   const [users, setUsers] = useState([]);
-
-
+  const { username } = useParams();
+  
   // Lấy danh sách người dùng khi component được tải
   useEffect(() => {
     fetchUsers();
@@ -11,7 +14,7 @@ const AdminPage = () => {
 
   // Hàm lấy dữ liệu người dùng từ API
   const fetchUsers = () => {
-    fetch('http://localhost:3000/api/admin')
+    fetch(`http://localhost:3000/api/user/${username}`)
       .then((response) => response.json())
       .then((data) => {
         setUsers(data);
@@ -25,7 +28,7 @@ const AdminPage = () => {
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
           
-          <a class="navbar-brand" href="#">Hello Admin {users.fullname}</a>
+          <p class="navbar-brand" >Hello User {users.fullname}</p>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -63,4 +66,4 @@ const AdminPage = () => {
   );
 };
 
-export default AdminPage;
+export default UserPage;

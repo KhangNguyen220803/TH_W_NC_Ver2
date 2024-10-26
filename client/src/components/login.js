@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Đảm bảo bạn đã thêm Bootstrap
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-
+  const navigate = useNavigate();
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
@@ -16,6 +17,18 @@ const Login = () => {
       });
       setMessage(response.data.message);
       localStorage.setItem('token', response.data.token); // Lưu token vào localStorage
+
+
+      // Điều hướng dựa trên vai trò của người dùng
+      if (response.data.user.role === "1") {
+        navigate(`/admin`);
+      } else {
+        navigate(`/user/${response.data.user.username}`);
+      }
+
+
+
+      // Chuyển hướng đến trang tìm kiếm với từ khóa
     } catch (error) {
       setMessage(error.response?.data.message || 'Login failed');
     }

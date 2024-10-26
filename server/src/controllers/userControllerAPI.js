@@ -3,7 +3,17 @@ import userModelAPI from "../services/userModelAPI.js";
 import bcrypt from 'bcryptjs'; // Dùng để kiểm tra mật khẩu đã mã hóa
 import jwt from 'jsonwebtoken';
 
-
+const sendFillAdmin = async (req, res) => {
+  let role = '1'
+  let infAdmin = await userModelAPI.getAdmin(role)
+  res.json(infAdmin)
+}
+const sendFillUser = async (req, res) => {
+  let role = '0'
+  let username = req.params.username
+  let infUser = await userModelAPI.getUser(role,username)
+  res.json(infUser)
+}
 
 const Login = async (req, res) => {
   const { username, password } = req.body;
@@ -24,14 +34,15 @@ const Login = async (req, res) => {
 
       // Kiểm tra password
       const isPasswordValid = await bcrypt.compare(password, user.password);
-      console.log('Entered password:', password);
-      console.log('Hashed password in DB:', user.password);
+      // console.log('Entered password:', password);
+      // console.log('Hashed password in DB:', user.password);
       
       
       if (!isPasswordValid) {
         return res.status(401).json({ message: 'Invalid credentials' });
       }
 
+      
       // Tạo JWT token
       const token = jwt.sign({ id: user.id, username: user.username ,role: user.role}, 'your_jwt_secret_key', {
         expiresIn: '1h',
@@ -41,6 +52,7 @@ const Login = async (req, res) => {
       return res.status(200).json({
         message: 'Login successful',
         token,
+        user: user
 
       });
     } catch (error) {
@@ -83,4 +95,4 @@ const Login = async (req, res) => {
     }
   };
   
-  export default { Resgister, Login };
+  export default { Resgister, Login, sendFillAdmin, sendFillUser };
