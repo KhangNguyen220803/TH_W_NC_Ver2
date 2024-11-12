@@ -53,7 +53,6 @@ const Login = async (req, res) => {
         message: 'Login successful',
         token,
         user: user
-
       });
     } catch (error) {
       console.error(error);

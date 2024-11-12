@@ -1,12 +1,12 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Routers from './components/router';
+import { Outlet } from 'react-router-dom';
 function App() {
   return (
 
    <>
-<Routers/>
+     <Outlet/>
 
 
    </>

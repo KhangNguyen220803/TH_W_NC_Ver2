@@ -8,8 +8,10 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <p class="nav-link active hover-highlight" aria-current="page"
-                       >Hello  <%= data.rows[0].username%></p>
+                    <p class="nav-link active hover-highlight" aria-current="page">
+                        Hello <%- data && data.rows && data.rows[0] ? data.rows[0].username : 'Guest' %>
+                     </p>
+                     
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active hover-highlight" aria-current="page"
@@ -18,6 +20,16 @@
                 <li class="nav-item">
                     <a class="nav-link active hover-highlight" aria-current="page"
                         href="http://localhost:3000/addUser">Add User</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active hover-highlight" aria-current="page"
+                        href="http://localhost:3000/listGroups">List Groups</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active hover-highlight" aria-current="page"
+                        href="http://localhost:3000/listProducts">List Products</a>
                 </li>
 
                 

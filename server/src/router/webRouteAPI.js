@@ -9,6 +9,7 @@ const initWebRouterAPI = (app) => {
     router.post('/api/resgister', UserAPI.Resgister);
     router.get('/api/admin', UserAPI.sendFillAdmin);
     router.get('/api/user/:username', UserAPI.sendFillUser);
+  
     
 
 
