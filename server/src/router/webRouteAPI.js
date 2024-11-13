@@ -10,7 +10,9 @@ const initWebRouterAPI = (app) => {
     router.get('/api/admin', UserAPI.sendFillAdmin);
     router.get('/api/user/:username', UserAPI.sendFillUser);
     router.get('/api/admindataUser', UserAPI.sendFillAdminUser);
+    router.get('/api/dataProfileUser/:username', UserAPI.sendFillProfileUser);
     
+    router.post('/api/editProfileUser/:username', UserAPI.updateUser)
   
     
 

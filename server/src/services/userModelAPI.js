@@ -41,11 +41,22 @@ const AdmingetinfUser = async (role) => {
   const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE role=?', [role])
   return rows
 }
+
+const fillUserProfile = async (username) => {
+  const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE username=?', [username])
+  return rows[0]
+}
+const updateUser = async (fullname, address, sex, email, username) => {
+  await pool.execute("UPDATE `users` SET  `fullname`=?, `address`=?, `sex`=?, `email`=? WHERE `username`=?", [fullname, address, sex, email, username])
+
+}
 // Xuất model
 export default {
+  updateUser,
   findUserByUsername,
   createUser,
   getAdmin,
   getUser,
-  AdmingetinfUser
+  AdmingetinfUser,
+  fillUserProfile
 };
