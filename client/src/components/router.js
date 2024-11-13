@@ -6,6 +6,7 @@ import React from 'react'
 import AdminPage from './adminPage';
 import Register from './resgister';
 import Login from './login'
+import Logout from './autoLogout.js'
 import UserPage from './UserPage'
 
 
@@ -16,7 +17,9 @@ export const Router = createBrowserRouter([
   element: <App />,
   children: [
     { path: "/", element: <Login /> },
-    { path: "register", element: <Register /> },
+    { path: "/login", element: <Login /> },
+    { path: "/logout", element: <Logout /> },
+    { path: "resgister", element: <Register /> },
     {path:"/user/:username",element:<UserPage/>},
     {path:"/admin", element:<AdminPage/>},
     { path: "*", element: <div>Không tìm thấy web theo yêu cầu</div> }

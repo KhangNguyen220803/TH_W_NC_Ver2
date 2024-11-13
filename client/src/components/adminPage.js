@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 const AdminPage = () => {
   const [users, setUsers] = useState([]);
 
@@ -56,7 +57,8 @@ const AdminPage = () => {
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>
-
+          
+          <Link to="/logout"> Logout</Link>
         </div>
       </div>
     </nav>

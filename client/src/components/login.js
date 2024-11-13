@@ -22,7 +22,8 @@ const Login = () => {
       // Điều hướng dựa trên vai trò của người dùng
       if (response.data.user.role === "1") {
         navigate(`/admin`);
-      } else {
+      } 
+      else if (response.data.user.role === "0") {
         navigate(`/user/${response.data.user.username}`);
       }
 
