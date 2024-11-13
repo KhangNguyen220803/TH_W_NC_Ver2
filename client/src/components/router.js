@@ -3,8 +3,9 @@ import App from '../App.js'
 import React from 'react'
 
 
-import AdminPage from './adminPage';
-import Register from './resgister';
+import AdminPage from './adminPage'
+import AdminListUser from './adminListUser.js'
+import Register from './resgister'
 import Login from './login'
 import Logout from './autoLogout.js'
 import UserPage from './UserPage'
@@ -22,6 +23,7 @@ export const Router = createBrowserRouter([
     { path: "resgister", element: <Register /> },
     {path:"/user/:username",element:<UserPage/>},
     {path:"/admin", element:<AdminPage/>},
+    {path:"/adminListUser", element:<AdminListUser/>},
     { path: "*", element: <div>Không tìm thấy web theo yêu cầu</div> }
   ]
 

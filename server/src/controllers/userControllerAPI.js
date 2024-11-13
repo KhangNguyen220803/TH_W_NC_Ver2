@@ -92,6 +92,14 @@ const Login = async (req, res) => {
       console.error(error);
       return res.status(500).json({ message: 'Server error' });
     }
+
+    
   };
   
-  export default { Resgister, Login, sendFillAdmin, sendFillUser };
+
+  const sendFillAdminUser = async (req, res) => {
+    let role = "0"
+    let AdmingetinfUser = await userModelAPI.AdmingetinfUser(role)
+    res.json(AdmingetinfUser)
+  }
+  export default { Resgister, Login, sendFillAdmin, sendFillUser, sendFillAdminUser };

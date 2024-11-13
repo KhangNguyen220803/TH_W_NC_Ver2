@@ -36,10 +36,16 @@ const createUser = async (username, password ,fullname, address, sex, email, rol
   return result[0].insertId;
 };
 
+
+const AdmingetinfUser = async (role) => {
+  const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE role=?', [role])
+  return rows
+}
 // Xuất model
 export default {
   findUserByUsername,
   createUser,
   getAdmin,
-  getUser
+  getUser,
+  AdmingetinfUser
 };
