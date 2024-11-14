@@ -29,13 +29,13 @@ function ListUser() {
   };
 
   // Hàm xử lý xóa người dùng
-  const handleDelete = async (e, masv) => {
+  const handleDelete = async (e, username) => {
     // e.preventDefault();
 
 
 
     try {
-      const response = await fetch(`http://localhost:3000/deleteUser/${masv}`, {
+      const response = await fetch(`http://localhost:3000/deleteUser/${username}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -96,18 +96,18 @@ function ListUser() {
         
               <td>
                 
-                <a className="btn btn-link" href={`http://localhost:6868/detailUser/${user.masv}`}>
+                <a className="btn btn-link" href={`http://localhost:6868/adminDetailUser/${user.username}`}>
                 <FaEye />
                 </a>
               </td>
               <td>
-                <a className="btn btn-link" href={`http://localhost:6868/editUser/${user.masv}`}>
+                <a className="btn btn-link" href={`http://localhost:6868/adminEditUser/${user.username}`}>
                   <FaEdit />
                 </a>
               </td>
               <td>
-                <form onSubmit={(e) => handleDelete(e, user.masv)}>
-                  <input type="hidden" value={user.masv} name="masv" />
+                <form onSubmit={(e) => handleDelete(e, user.username)}>
+                  <input type="hidden" value={user.username} name="username" />
                   <button type="submit" className="btn btn-link text-danger">
                     <FaTrash />
                   </button>

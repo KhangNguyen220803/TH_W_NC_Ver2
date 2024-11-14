@@ -13,6 +13,11 @@ const getUser = async (role,username) => {
   return rows[0]
 }
 
+const getDetailUser = async (username) => {
+  const [rows, fields] = await pool.execute('SELECT * FROM `users` WHERE username=?', [username])
+  return rows[0]
+}
+
 
 // Hàm để tìm user theo username
 const findUserByUsername = async (username) => {
@@ -50,6 +55,9 @@ const updateUser = async (fullname, address, sex, email, username) => {
   await pool.execute("UPDATE `users` SET  `fullname`=?, `address`=?, `sex`=?, `email`=? WHERE `username`=?", [fullname, address, sex, email, username])
 
 }
+const deleteUser = async (username) => {
+  await pool.execute('DELETE FROM users WHERE username=?', [username])
+}
 // Xuất model
 export default {
   updateUser,
@@ -58,5 +66,7 @@ export default {
   getAdmin,
   getUser,
   AdmingetinfUser,
-  fillUserProfile
+  fillUserProfile,
+  getDetailUser,
+  deleteUser
 };

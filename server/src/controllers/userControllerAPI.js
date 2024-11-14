@@ -104,6 +104,16 @@ const sendFillAdminUser = async (req, res) => {
 }
 
 
+const sendFillAdminDetailUser = async (req, res) => {
+
+  let username = req.params.username
+  let userDetail = await userModelAPI.getDetailUser(username)
+  res.json(userDetail)
+}
+
+
+
+
 const sendFillProfileUser = async (req, res) => {
 
   let username = req.params.username
@@ -114,12 +124,15 @@ const sendFillProfileUser = async (req, res) => {
 const updateUser = async (req, res) => {
 
   let username = req.params.username;
-
-  
   let { fullname, address, sex, email } = req.body;
   await userModelAPI.updateUser(fullname, address, sex, email, username);
 
 
 };
 
-export default { Resgister, Login, sendFillAdmin, sendFillUser, sendFillAdminUser, sendFillProfileUser, updateUser };
+const deleteUser = async (req, res) => {
+  let username = req.params.username
+  await userModelAPI.deleteUser(username)
+}
+
+export default { Resgister, Login, sendFillAdmin, sendFillUser, sendFillAdminUser, sendFillProfileUser, updateUser,sendFillAdminDetailUser,deleteUser };

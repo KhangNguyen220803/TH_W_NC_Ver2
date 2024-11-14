@@ -10,10 +10,11 @@ const initWebRouterAPI = (app) => {
     router.get('/api/admin', UserAPI.sendFillAdmin);
     router.get('/api/user/:username', UserAPI.sendFillUser);
     router.get('/api/admindataUser', UserAPI.sendFillAdminUser);
+    router.get('/api/admindatadetailUser/:username', UserAPI.sendFillAdminDetailUser);
     router.get('/api/dataProfileUser/:username', UserAPI.sendFillProfileUser);
     
     router.post('/api/editProfileUser/:username', UserAPI.updateUser)
-  
+    router.delete('/deleteUser/:username', UserAPI.deleteUser);
     
 
 

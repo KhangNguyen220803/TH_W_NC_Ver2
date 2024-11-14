@@ -10,6 +10,9 @@ import Login from './login'
 import Logout from './autoLogout.js'
 import UserPage from './UserPage'
 import ProfileUser from './profileUser.js'
+import AdminDetailUser from './adminDetailUser.js'
+import AdminEditUser from './adminEditUser.js'
+
 
 
 export const Router = createBrowserRouter([
@@ -23,6 +26,8 @@ export const Router = createBrowserRouter([
     { path: "resgister", element: <Register /> },
     {path:"/user/:username",element:<UserPage/>},
     {path:"/admin", element:<AdminPage/>},
+    {path:"/adminDetailUser/:username", element:<AdminDetailUser/>},
+    {path:"/adminEditUser/:username", element:<AdminEditUser/>},
     {path:"/adminListUser", element:<AdminListUser/>},
     {path:"/profileUser/:username", element:<ProfileUser/>},
     { path: "*", element: <div>Không tìm thấy web theo yêu cầu</div> }
